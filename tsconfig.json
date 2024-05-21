@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "incremental": true,
+    "target": "ESNext",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "declaration": true,
+    "declarationMap": true,
+    "outDir": "dist",
+    "removeComments": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "skipLibCheck": true,
+    "composite": true
+  },
+  "exclude": ["node_modules", "./dist/**/*"],
+  "include": ["./**/*"]
+}

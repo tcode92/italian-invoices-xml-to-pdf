@@ -1,0 +1,21 @@
+{
+  "name": "nodejs-fattura-converter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "esbuild index.ts --packages=external --platform=node --bundle --outfile=index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.5.0",
+    "nodemon": "^3.0.1",
+    "ts-node-dev": "^2.0.0"
+  },
+  "dependencies": {
+    "puppeteer": "^21.0.3"
+  }
+}
