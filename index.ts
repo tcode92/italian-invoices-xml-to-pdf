@@ -88,7 +88,7 @@ async function execPromise(commandLine: string) {
 async function toPdf(file: string, output: string) {
   if (!browser) {
     browser = await puppeteer.launch({
-      headless: "new",
+      headless: true,
     });
   }
   const page = await browser.newPage();
@@ -121,7 +121,7 @@ async function convertXmlToHtml(inputPaths: string[]) {
         let opensslResult = false;
         try {
           await execPromise(
-            `openssl cms -verify -in ${file} -inform DER -noverify -out temp/${n.name}.xml`
+            `openssl cms -verify -in "${file}" -inform DER -noverify -out temp/${n.name}.xml`
           );
           opensslResult = true;
         } catch (e) {
@@ -130,16 +130,16 @@ async function convertXmlToHtml(inputPaths: string[]) {
         console.log("OPENSSL VERIFICATION: ", opensslResult);
         if (!opensslResult) {
           await execPromise(
-            `cat ${file} | tr -d '\\r\\n' | openssl base64 -d -A | openssl cms -verify -inform DER -noverify -out temp/${n.name}.xml`
+            `cat "${file}" | tr -d '\\r\\n' | openssl base64 -d -A | openssl cms -verify -inform DER -noverify -out temp/${n.name}.xml`
           );
         }
       }
 
       // apply assosoftware stylesheet
       await execPromise(
-        `java -jar SaxonHE12-3J/saxon-he-12.3.jar ${
+        `java -jar SaxonHE12-3J/saxon-he-12.3.jar "${
           !isSignedFile ? file : `temp/${n.name}.xml`
-        } ${TEMPLATES.assoSoftware} -o:temp/${n.name}.html`
+        }" ${TEMPLATES.assoSoftware} -o:"temp/${n.name}.html"`
       );
       tempArray.push(`temp/${n.name}.html`);
       if (isSignedFile) {

@@ -11,11 +11,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@types/node": "^20.5.0",
-    "nodemon": "^3.0.1",
-    "ts-node-dev": "^2.0.0"
+    "@types/node": "^20.5.0"
   },
   "dependencies": {
-    "puppeteer": "^21.0.3"
+    "puppeteer": "^23.4.0"
   }
 }
